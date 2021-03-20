@@ -1,58 +1,54 @@
-class InputApp{
-    num1: HTMLInputElement;
-    num2: HTMLInputElement;
-    num3: HTMLInputElement;
-    num4: HTMLInputElement;
-
-    sum: HTMLInputElement;
-    avg: HTMLInputElement;
-    min: HTMLInputElement;
-    max: HTMLInputElement;
-
-    constructor(){
-        this.start();
+class StatsApp{
+    data1Input: HTMLInputElement;
+    data2Input: HTMLInputElement;
+    data3Input: HTMLInputElement;
+    data4Input: HTMLInputElement;
+    sumInput: HTMLInputElement;
+    avgInput: HTMLInputElement;
+    minInput: HTMLInputElement;
+    maxInput: HTMLInputElement;
+    constructor() {
+        this.startApp();
     }
-
-    start(){
-        this.GetInputValue();
-        this.Listeners();
+    startApp() {
+        this.getInputs();
+        this.watchInputValues();
     }
-    
-    GetInputValue() {
-        this.num1 = document.querySelector('#num1');
-        this.num2 = document.querySelector('#num2');
-        this.num3 = document.querySelector('#num3');
-        this.num4 = document.querySelector('#num4');  
-
-        this.sum = document.querySelector('#sum');
-        this.avg = document.querySelector('#avg');
-        this.min = document.querySelector('#min');
-        this.max = document.querySelector('#max');
+    getInputs() {
+        this.data1Input = document.querySelector('#data1');
+        this.data2Input = document.querySelector('#data2');
+        this.data3Input = document.querySelector('#data3');
+        this.data4Input = document.querySelector('#data4');  
+        this.sumInput = document.querySelector('#sum');
+        this.avgInput = document.querySelector('#avg');
+        this.minInput = document.querySelector('#min');
+        this.maxInput = document.querySelector('#max');
     }
-
-    Listeners(){
-        this.num1.addEventListener('input', () => this.DoMathAndFIll());
-        this.num2.addEventListener('input', () => this.DoMathAndFIll());
-        this.num3.addEventListener('input', () => this.DoMathAndFIll());
-        this.num4.addEventListener('input', () => this.DoMathAndFIll());
+    watchInputValues() {
+        this.data1Input.addEventListener('input', () => this.computeData());
+        this.data2Input.addEventListener('input', () => this.computeData());
+        this.data3Input.addEventListener('input', () => this.computeData());
+        this.data4Input.addEventListener('input', () => this.computeData());
     }
+    computeData() {
+        let data1 = +this.data1Input.value;
+        let data2 = +this.data2Input.value;
+        let data3 = +this.data3Input.value;
+        let data4 = +this.data4Input.value;
 
-    DoMathAndFIll(){
-        let val1 = +this.num1.value;
-        let val2 = +this.num1.value;
-        let val3 = +this.num1.value;
-        let val4 = +this.num1.value;
+        let sum = data1 + data2 + data3 + data4;
+        let avg = sum / 4;
+        let min = Math.min(data1, data2, data3, data4);
+        let max = Math.max(data1, data2, data3, data4);
 
-        let sumary = val1 + val2 + val3 + val4;
-        let average = sumary / 4;
-        let minimum = Math.min(val1, val2, val3, val4);
-        let maximum = Math.max(val1, val2, val3, val4);
-
-        this.sum.value = sumary.toString();
-        this.avg.value = average.toString();
-        this.min.value = minimum.toString();
-        this.max.value = maximum.toString();
+        this.showStats(sum, avg, min, max);
+    }
+    showStats(sum: number, avg: number, min: number, max: number){
+        this.sumInput.value = sum.toString();
+        this.avgInput.value = avg.toString();
+        this.minInput.value = min.toString();
+        this.maxInput.value = max.toString();
     }
 }
 
-let start = new InputApp();
+let statsApp = new StatsApp();
