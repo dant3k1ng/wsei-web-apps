@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
 
     <title>DrummApp</title>
+
     <style>
         body{
             padding: 0;
@@ -19,7 +22,7 @@
             background-color: #dbd9d95e;
             border-radius: 20px;
             text-align: center;
-            padding: 10px 0 10px 0;
+            padding: 10px 10px 10px 10px;
             margin: 20px;
             transition: 0.2s ease-in-out;
         }
@@ -30,11 +33,46 @@
             cursor: pointer;
         }
 
+        .player{
+            color: #f3f3f3;
+            font-size: larger;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+        }
+
+        .track{
+            text-align: center;
+        }
+
+        .record{
+            background-color: #bb2e2eab;
+            border-radius: 5%;
+            border: 0;
+            width: 50px;
+            height: 30px;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+
+        .play{
+            width: 80px;
+            height: 35px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            margin-left: 8px;
+        }
+
+        .play:hover{
+            background-color: #9e9c9c;
+            transition: 0.3s ease-in-out;
+        }
+
     </style>
 </head>
 <body>
     <div class="col-12 container">
-        <div class="row mt-5">
+        <div class="row">
         <div class="col-lg-3 button">
             <h1> Q </h1>
             <p> boom </p>
@@ -80,6 +118,34 @@
             <p> tom </p>
             <audio src="sounds/tom.wav" data-sound='tom'> </audio>
         </div>
+    </div>
+    <div class="row">
+    <div class="col-8 player">
+        <div class="col-10 track">
+            <p> Track1 
+                <button class="record" id="startRecTrack1"> <i class="bi bi-record2"></i></button> 
+                <button class="play" id="playTrack1"> Play </button>
+            </p>
+        </div>
+        <div class="col-10 track">
+            <p> Track2
+                <button class="record" id="startRecTrack2"> <i class="bi bi-record2"></i></button> 
+                <button class="play" id="playTrack1"> Play </button> 
+            </p>
+        </div>
+        <div class="col-10 track">
+            <p> Track3
+                <button class="record" id="startRecTrack3"> <i class="bi bi-record2"></i></button> 
+                <button class="play" id="playTrack1"> Play </button>
+            </p>
+        </div>
+        <div class="col-10 track">
+            <p> Track4
+                <button class="record" id="startRecTrack4"> <i class="bi bi-record2"></i></button> 
+                <button class="play" id="playTrack1"> Play </button> 
+            </p>
+        </div>
+    </div>
     </div>
     </div>
     <script src="script.js"> </script>
