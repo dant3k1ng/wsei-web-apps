@@ -1,3 +1,4 @@
+var boom = document.querySelector('.boom');
 var boomSound = document.querySelector('[data-sound="boom"]');
 var clapSound = document.querySelector('[data-sound="clap"]');
 var hihatSound = document.querySelector('[data-sound="hihat"]');
@@ -50,22 +51,22 @@ function recTrack4() {
 }
 function playTrack1() {
     track1.forEach(function (sound) {
-        setTimeout(function () { return playSound(sound.key); }, sound.time);
+        setTimeout(function () { return playSound(sound.key, sound.time); }, sound.time);
     });
 }
 function playTrack2() {
     track2.forEach(function (sound) {
-        setTimeout(function () { return playSound(sound.key); }, sound.time);
+        setTimeout(function () { return playSound(sound.key, sound.time); }, sound.time);
     });
 }
 function playTrack3() {
     track3.forEach(function (sound) {
-        setTimeout(function () { return playSound(sound.key); }, sound.time);
+        setTimeout(function () { return playSound(sound.key, sound.time); }, sound.time);
     });
 }
 function playTrack4() {
     track4.forEach(function (sound) {
-        setTimeout(function () { return playSound(sound.key); }, sound.time);
+        setTimeout(function () { return playSound(sound.key, sound.time); }, sound.time);
     });
 }
 function onKeyPress(ev) {
@@ -85,9 +86,9 @@ function onKeyPress(ev) {
             track4.push({ key: key, time: time });
             break;
     }
-    playSound(key);
+    playSound(key, time);
 }
-function playSound(key) {
+function playSound(key, time) {
     switch (key) {
         case "q":
             boomSound.currentTime = 0;

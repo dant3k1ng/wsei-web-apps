@@ -1,3 +1,5 @@
+const boom :HTMLElement = document.querySelector('.boom');
+
 let boomSound : HTMLAudioElement = document.querySelector('[data-sound="boom"]');
 let clapSound: HTMLAudioElement = document.querySelector('[data-sound="clap"]');
 let hihatSound: HTMLAudioElement = document.querySelector('[data-sound="hihat"]');
@@ -59,25 +61,25 @@ function recTrack4(): void{
 
 function playTrack1(): void{
     track1.forEach(sound => {
-        setTimeout(() => playSound(sound.key), sound.time)
+        setTimeout(() => playSound(sound.key, sound.time), sound.time)
     })
 }
 
 function playTrack2(): void{
     track2.forEach(sound => {
-        setTimeout(() => playSound(sound.key), sound.time)
+        setTimeout(() => playSound(sound.key, sound.time), sound.time)
     })
 }
 
 function playTrack3(): void{
     track3.forEach(sound => {
-        setTimeout(() => playSound(sound.key), sound.time)
+        setTimeout(() => playSound(sound.key, sound.time), sound.time)
     })
 }
 
 function playTrack4(): void{
     track4.forEach(sound => {
-        setTimeout(() => playSound(sound.key), sound.time)
+        setTimeout(() => playSound(sound.key, sound.time), sound.time)
     })
 }
 
@@ -87,7 +89,7 @@ function onKeyPress(ev: KeyboardEvent): void{
 
     switch(recordingTrack){
         case 1:
-            track1.push({key, time})
+            track1.push({key, time});
             break;
         case 2:
             track2.push({key, time});
@@ -100,11 +102,11 @@ function onKeyPress(ev: KeyboardEvent): void{
             break;
     }
 
-    playSound(key);
-}
+    playSound(key, time);
+} 
 
 
-function playSound(key: string):void{
+function playSound(key: string, time: number):void{
     switch(key){
         case "q":
             boomSound.currentTime = 0;
