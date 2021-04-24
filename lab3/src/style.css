@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("img/bg.jpg");
+    background-size: cover;
+    background-attachment: scroll;
+    background-repeat: repeat;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+.container{
+    width: 80%;
+    min-height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #52525262;
+    border-radius: 10px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding-bottom: 30px;
+}
+
+.content{
+    width: 100%;
+    min-height: 65vh;
+}
+
+.inputDiv{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 28px;
+    text-align: center;
+}
+
+.inputDiv input{
+    margin-top: 40px;
+    background-color: #ffffff00;
+    border: 0;
+    border-bottom: 1px solid #ffffff;
+    font-size: 28px;
+    color: #fff; 
+    text-align: center;
+}
+
+input[type=text]:focus {
+    border:none;
+}   
+
+button{
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    background-color: #b8b8b8fb;
+    color: #fff;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #ccccccfb;
+}
+
+.cityDiv{
+    width: 95%;
+    min-height: 90px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff34;
+    color: #fff;
+    text-align: left;
+    padding: 0 10px 10px 10px;
+    line-height: 55px;
+    font-size: 20px;
+}
+
+.cityDiv h1 {
+    float: left; 
+    border-right: 2px solid #00000031; 
+    padding-right: 10px;
+}
+
+.cityDiv p {
+    text-align: center; 
+    float: left; 
+    margin-top: 25px; 
+    margin-left: 10px;
+    padding-right: 10px;
+}
+
+.cityDiv span{
+    line-height: 90px;
+    margin-left: 10px;
+    padding-right: 10px;
+}
+
+.cityDiv img {float: left;}
+
+.clean{
+    position: absolute;
+    top: 155px;
+    right: 240px;
+}
+
+.clean img{
+    width: 60px;
+    transition: ease-in-out 0.2s;
+}
+
+.clean img:hover{
+    width: 65px;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
