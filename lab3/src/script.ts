@@ -5,7 +5,12 @@ class WeatherApp{
     constructor(){
         this.listenButton();
         this.searchInStorage('l');
-        setInterval( () => this.searchInStorage('n'), 120000 );
+        this.reload();
+    }
+
+    reload(){
+        const reload = <HTMLInputElement>document.querySelector('.reload');
+        reload.addEventListener('click', (ev: Event) => this.deleteCityDivs());
     }
 
     listenButton() {
@@ -151,11 +156,11 @@ class WeatherApp{
             this.saveConfig(weather);
     }
 
-    /*deleteCityDivs(){
-        const container = document.querySelector(".cityDiv");
+    deleteCityDivs(){
+        localStorage.clear();
 
-        container.innerHTML = '';
-    }*/
+        window.location.reload();
+    }
 }
 
 const app = new WeatherApp();
