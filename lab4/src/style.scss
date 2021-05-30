@@ -1,0 +1,59 @@
+body{
+    background-color: #292929;
+
+    .logo{
+        font-size: 28px;
+        color: #e2e2e2;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin-left: 20px;
+    }
+    .canvas4notes{
+        width: 95%;
+        min-height: 100%;
+    }
+    .notePattern{
+        width: 700px;
+        height: 225px;
+        border: 2px solid #9b462c5b;
+        border-radius: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        padding: 10px;
+
+        .title{
+            background-color: #ffffff00;
+            border-top: none;
+            border-right: none;
+            border-bottom: 1px solid #94949465;
+            border-left: 1px solid #94949465;
+            border-radius: 2px;
+            padding: 10px;
+            width: 400px;
+            color: #e0e0e0;
+            font-size: 18px;
+        }
+        &:focus{
+            border: none;
+        }
+
+        .content{
+            background-color: #ffffff00;
+            border: 1px solid #94949465;
+            border-radius: 2px;
+            padding: 10px;
+            width: 550px;
+            height: 100px;
+            margin-top: 10px;
+            color: #e0e0e0;
+        }
+
+        .changeColor img{
+            width: 35px;
+            position: relative;
+            top: 0;
+            right: -665px;
+        }
+    }
+
+}
