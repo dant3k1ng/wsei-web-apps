@@ -61,7 +61,7 @@ class WeatherApp{
         
         weatherImg.src = weatherPhoto;
         cityName.innerHTML = cityInfo;
-        temp.innerHTML = "<b>Temperature: </b>" + tempInfo + "&deg;C";
+        temp.innerHTML = "<b>Temperature: </b>" + tempInfo + "&deg;c";
         sky.innerHTML = "<b> Cloudy: </b>" + skyInfo;
         air.innerHTML = "<b> Air Pressure:  </b>" + airPressure + " hPa";
         humiditi.innerHTML = "<b> Absolute humidity: </b>" + absoluteHumidity + " g/m<sup>3</sup>";
