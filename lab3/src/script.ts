@@ -117,6 +117,7 @@ class WeatherApp{
         const container = document.querySelector('.container');
         const cityDiv = document.createElement('div');
         cityDiv.classList.add('cityDiv');
+        
         cityDiv.setAttribute('id', 'cityDiv'+this.i++);
         container.appendChild(cityDiv);
 
