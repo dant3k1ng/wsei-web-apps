@@ -18,7 +18,6 @@ export async function updateNote(id: string, note: any){
 
 export async function getNotes(){
     const res = db.collection('notes').doc().get().then(res => ({id: res.id, data: res.data()}));
-
     console.log(res);
  }
 
