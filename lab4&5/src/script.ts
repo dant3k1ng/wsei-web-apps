@@ -1,5 +1,6 @@
-import { App } from './app';
-import '../src/style.scss';
+import App from './App';
+import './styles/style.scss'
 
 const app = new App();
+app.renderNotes();
 

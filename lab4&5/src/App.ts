@@ -1,63 +1,85 @@
-import './style.scss';
-import Note from './Note'
-import NotesHandling from './Notes';
+import Notes from './controlls/Notes';
+import FirestoreStorage from './storage/FirestoreStorage';
+import AppStorage from './storage/FirestoreStorage';
+import firebaseConfig from './firebaseConfig';
+import CreateNote from './controlls/CreateNote';
+import INoteControll from './interfaces/NoteControllInterface';
+import NoteInterface from './interfaces/Note';
+import StorageInterface from './interfaces/Storage';
 
 
-export class App {
-    constructor(){
-        this.downloadExistingNotes();
-        this.addButton();
+export default class App implements INoteControll {
+
+    private _storageType = "";
+
+    noteCreator: CreateNote;
+    concrete: StorageInterface;
+
+    constructor(storageType = "") {
+
+        if (storageType !== "") {
+            this._storageType = storageType;
+        }
+
+        this.noteCreator = new CreateNote(this);
+        this.concrete = this.getStorageService();
     }
 
-    addButton() {
-        const addButton = <HTMLInputElement>document.getElementById('add');
-        addButton.addEventListener('click', (ev: Event) => Note.downloadData());
+
+    public getStorageType(): string
+    {
+        if(this._storageType !== "") {
+            return this._storageType;
+        }
+
+        return firebaseConfig.storage;
     }
 
-    downloadExistingNotes(){
-        NotesHandling.getCollection();
+    public getStorageService(): StorageInterface {
+
+        const type = this.getStorageType();
+
+        if (type === "firebase") return new FirestoreStorage();
+        return new AppStorage();
     }
+
+    public async createNote(note: NoteInterface) {
+        let res = await this.concrete.save(note);
+
+        if(res){
+            this.renderNotes()
+        }
+
+        return res;
+    }
+
+    public async updateNote(note: NoteInterface) {
+        let res = await this.concrete.update(note);
+
+        if(res){
+            this.renderNotes();
+        }
+
+        return res;
+    }
+
+    public async deleteNote(noteId: string) {
+        let res = await this.concrete.delete(noteId);
+
+        if(res){
+            this.renderNotes();
+        }
+
+        return res;
+    }
+
+    public async getAllNotes() {
+        return await this.concrete.getAll();
+    }
+
+    public async renderNotes() {
+        const notes = new Notes(await this.getAllNotes(), this);
+        notes.render();
+    }
+    
 }
-
-/*
-Projekt 4 – Notekeep 
-
- 
-
-Aplikacja pozwala na tworzenie, przechowywanie, edycję i usuwanie notatek. Każda notatka musi w minimalnej formie posiadać: 
-
-Tytuł 
-
-Treść 
-
-Kolor notatki 
-
-Możliwość przypięcia do góry na liście notatek 
-
-Datę utworzenia 
-
-Notatki powinny być zapisywane w localStorage i wyświetlane w formie tablicy notatek na stronie głównej aplikacji. 
-
- 
-Wersja ciekawsza: 
-
-Zapisywanie daty przypomnień (i generowanie przypomnień w formie Notification) 
-
-Tagowanie notatek 
-
-Wyszukiwarka notatek (po wszystkich dostępnych pola notatki) 
-
- 
-
-Przykłady: Google Keep, Evernote, Onenote 
-
-Ważne: wykorzystaj projekt Pogodynka I dokonaj refaktoryzacji kodu. 
-
-Projekt  NoteKeep powinien składać się w minimalnej formie z klas App, Notes, Note, AppStorage. 
-
-Każda klasa powinna być w osobnym pliku 
-
-Zdefiniuj interfejs do obiektu AppStorage 
-
-Użyj Sass do formatowania wizualnego 
-*/
